@@ -7,42 +7,45 @@ let userChoice = `Введите страну`;
 
 const country = prompt(userChoice);
 
-const CHINA = 'Китай';
-const SOUTHAMERICA = 'Южная Америка';
-const AUSTRALIA = 'Австралия';
-const INDIA = 'Индия';
-const JAMAICA = 'Ямайка';
+const inLowerCase = country.toLowerCase();
 
 
 
-let message;
+const chinaPrice = 100;
+
+const southAmericaPrice = 250;
+
+const australiaPrice = 170;
+
+const indiaPrice = 80;
+
+const jamaicaPrice = 120;
 
 
 
-switch (country) {
-  case CHINA:
-    message = `Доставка в ${country} будет стоить 100 кредитов`;
+
+switch (inLowerCase) {
+  case 'китай':
+    console.log(`Доставка в ${country} будет стоить ${chinaPrice} кредитов`);
     break;
 
-  case SOUTHAMERICA:
-    message = `Доставка в ${country} будет стоить 250 кредитов`;
+  case 'южная америка':
+    console.log(`Доставка в ${country} будет стоить ${southAmericaPrice} кредитов`);
     break;
 
-  case AUSTRALIA:
-    message = `Доставка в ${country} будет стоить 170 кредитов`;
+  case 'австралия':
+    console.log(`Доставка в ${country} будет стоить ${australiaPrice} кредитов`);
     break;
 
-  case INDIA:
-    message = `Доставка в ${country} будет стоить 80 кредитов`;
+  case 'индия':
+    console.log(`Доставка в ${country} будет стоить ${indiaPrice} кредитов`);
     break;
 
-  case JAMAICA:
-    message = `Доставка в ${country} будет стоить 120 кредитов`;
+  case 'ямайка':
+
+    console.log(`Доставка в ${country} будет стоить ${jamaicaPrice} кредитов`);
     break;
 
   default:
-    message = 'В вашей стране доставка не доступна';
+    console.log(`В вашей стране доставка не доступна`);
 }
-
-
-console.log(message);

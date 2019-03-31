@@ -8,16 +8,13 @@ const quantity = 3;
 
 const totalPrice = pricePerDroid * quantity;
 
-const enoughMoney = credits / totalPrice;
-
-const balance = credits - totalPrice;
 
 let message;
 
 if (totalPrice > credits) {
   message = `Недостаточно средств на счету!`;
 } else {
-  message = `Вы купили ${quantity} дроидов, на счету осталось ${balance} кредитов.`;
+  message = `Вы купили ${quantity} дроидов, на счету осталось ${credits - totalPrice} кредитов.`;
 }
 
 console.log(message);
