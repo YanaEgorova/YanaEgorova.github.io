@@ -6,19 +6,19 @@ let userChoise = prompt(entrance);
 
 const ADMIN_PASSWORD = 'm4ng0h4ckz';
 
-const canceled = 'Отменено пользователем!';
-
-const welcome = 'Добро пожаловать!';
-
-const accessIsDenied = 'Доступ запрещен, неверный пароль!';
 
 
 let message;
 
 if (userChoise === null) {
-  alert(canceled);
+  message = 'Отменено пользователем!';
+
 } else if (userChoise === ADMIN_PASSWORD) {
-  alert(welcome);
+  message = 'Добро пожаловать!';
+
 } else {
-  alert(accessIsDenied);
+  message = 'Доступ запрещен, неверный пароль!';
+
 }
+
+alert(message);
