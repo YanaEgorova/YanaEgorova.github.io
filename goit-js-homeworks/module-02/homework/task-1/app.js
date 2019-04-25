@@ -21,7 +21,7 @@ do {
 
   }
 
-  if (Number.isNaN(Number(input)) === false) {
+  if (!Number.isNaN(Number(input))) {
 
 
     numbers.push(Number(input));
