@@ -17,9 +17,11 @@ do {
 
   if (input === null) {
     alert('Отменено пользователем');
-    continue;
+    break;
 
-  } else if (Number.isNaN(Number(input)) === false && input !== '' && input.trim() !== '') {
+  }
+
+  if (Number.isNaN(Number(input)) === false) {
 
 
     numbers.push(Number(input));
@@ -37,9 +39,17 @@ do {
 
 let total = 0;
 
-for (let i = 0; i < numbers.length; i += 1) {
-  total += numbers[i];
-}
+for (const number of numbers) {
 
+
+
+  if (numbers.length !== 0) {
+
+    total += number;
+
+
+  }
+
+}
 
 console.log(`Общая сумма чисел равна ${total}`);

@@ -21,19 +21,6 @@ do {
     break;
   }
 
-  if (passwords.includes(userInput) === false) {
-    attemptsLeft -= 1;
-
-    alert(`Неверный пароль, у вас осталось ${attemptsLeft} попыток`);
-
-  }
-
-  if (attemptsLeft < 1) {
-    alert('У вас закончились попытки, аккаунт заблокирован!');
-    break;
-  }
-
-
   if (passwords.includes(userInput)) {
     alert('Добро пожаловать!');
     break;
@@ -41,4 +28,13 @@ do {
 
 
 
-} while (userInput !== null);
+  attemptsLeft -= 1;
+
+  if (!attemptsLeft) {
+    alert('У вас закончились попытки, аккаунт заблокирован!')
+    break;
+  }
+
+  alert(`Неверный пароль, у вас осталось ${attemptsLeft} попыток`);
+
+} while (attemptsLeft);
