@@ -36,18 +36,18 @@ const notepad = {
 
     return note;
   },
-  //   deleteNote(id) {
+  deleteNote(id) {
 
-  //     for (let i = 0; i < this.notes.length; i += 1) {
-  //       // console.log(this.notes[i]);
-  //       const note = this.notes[i];
 
-  //       if (note.id === id) {
-  //         this.notes.splice(i, 1);
-  //         return;
-  //       }
-  //     }
-  //   },
+    const rightIndex = this.notes.indexOf(notepad.findNoteById(id))
+
+    if (rightIndex) {
+      this.notes.splice(rightIndex, 1)
+      return;
+    }
+
+
+  },
   //   updateNoteContent(id, updatedContent) {
 
   //     const note = this.findNoteById(id);
@@ -71,35 +71,30 @@ const notepad = {
 
   //     return note;
   //   },
-  //   filterNotesByQuery(query) {
+  filterNotesByQuery(query) {
 
-  //     const result = [];
+    const result = [];
 
-  //     for (let i = 0; i < this.notes.length; i += 1) {
-  //       //console.log(this.notes[i]);
-  //       const note = this.notes[i];
-
-  //       query = query.toLowerCase();
+    for (let i = 0; i < this.notes.length; i += 1) {
+      //console.log(this.notes[i]);
+      const note = this.notes[i];
 
 
-  //       let body = note.body.toLowerCase();
+      let body = note.body.toLowerCase().includes(query.toLowerCase())
 
-  //       body = body.includes(query)
+      //console.log(body)
 
-  //       //console.log(body)
+      let title = note.title.toLowerCase().includes(query.toLowerCase())
 
+      //console.log(title)
 
+      if (body || title) {
+        result.push(note)
+      }
 
-  //       let title = note.title.toLowerCase();
-  //       title = title.includes(query)
-
-  //       if (body || title) {
-  //         result.push(note)
-  //       }
-
-  //     }
-  //     return result;
-  //   },
+    }
+    return result;
+  },
   //   filterNotesByPriority(priority) {
 
   //     const result = [];
@@ -144,11 +139,15 @@ notepad.saveNote({
 
 notepad.saveNote({
   id: "id-4",
-  title: "Winter clothes",
-  body: "Winter is coming! Need some really warm clothes: shoes, sweater, hat, jacket, scarf etc. Maybe should get a set of sportwear as well so I'll be able to do some excercises in the park.",
+  title: "YaNa clothes",
+  body: "YaNa is coming! Need some really warm clothes: shoes, sweater, hat, jacket, scarf etc. Maybe should get a set of sportwear as well so I'll be able to do some excercises in the park.",
   priority: Priority.LOW
 });
 
+
+
+
+console.log(notepad.filterNotesByQuery('Yana'))
 
 
 //console.log(notepad.findNoteById("id-1"))
