@@ -18,13 +18,14 @@ const notepad = {
   },
   findNoteById(id) {
 
-    for (let i = 0; i < this.notes.length; i += 1) {
-      //console.log(this.notes[i]);
-      const note = this.notes[i];
+    for (const note of this.notes) {
+      //console.log(note);
 
       if (note.id === id) {
-        return note;
+        return note
       }
+
+
 
 
     }
@@ -35,92 +36,88 @@ const notepad = {
 
     return note;
   },
-  deleteNote(id) {
+  //   deleteNote(id) {
 
-    for (let i = 0; i < this.notes.length; i += 1) {
-      // console.log(this.notes[i]);
-      const note = this.notes[i];
+  //     for (let i = 0; i < this.notes.length; i += 1) {
+  //       // console.log(this.notes[i]);
+  //       const note = this.notes[i];
 
-      if (note.id === id) {
-        this.notes.splice(i, 1);
-        return;
-      }
-    }
-  },
-  updateNoteContent(id, updatedContent) {
+  //       if (note.id === id) {
+  //         this.notes.splice(i, 1);
+  //         return;
+  //       }
+  //     }
+  //   },
+  //   updateNoteContent(id, updatedContent) {
 
-    const note = this.findNoteById(id);
+  //     const note = this.findNoteById(id);
 
-    console.log(note)
+  //     //console.log(note)
 
-    const result = {
-      ...note,
-      ...updatedContent
-
-    }
+  //     const result = Object.assign(note, updatedContent)
 
 
 
-    return result
+  //     return result
 
-  },
-  updateNotePriority(id, priority) {
+  //   },
+  //   updateNotePriority(id, priority) {
 
-    const note = this.findNoteById(id);
+  //     const note = this.findNoteById(id);
 
-    if (note) {
-      note.priority = priority;
-    }
+  //     if (note) {
+  //       note.priority = priority;
+  //     }
 
-    return note;
-  },
-  filterNotesByQuery(query) {
+  //     return note;
+  //   },
+  //   filterNotesByQuery(query) {
 
-    const result = [];
+  //     const result = [];
 
-    for (let i = 0; i < this.notes.length; i += 1) {
-      //console.log(this.notes[i]);
-      const note = this.notes[i];
+  //     for (let i = 0; i < this.notes.length; i += 1) {
+  //       //console.log(this.notes[i]);
+  //       const note = this.notes[i];
 
-      query = query.toLowerCase();
-
-
-      let body = note.body.toLowerCase();
-
-      body = body.includes(query)
-
-      //console.log(body)
+  //       query = query.toLowerCase();
 
 
+  //       let body = note.body.toLowerCase();
 
-      let title = note.title.toLowerCase();
-      title = title.includes(query)
+  //       body = body.includes(query)
 
-      if (body || title) {
-        result.push(note)
-      }
-
-    }
-    return result;
-  },
-  filterNotesByPriority(priority) {
-
-    const result = [];
-
-    for (let i = 0; i < this.notes.length; i += 1) {
-      //console.log(this.notes[i]);
-      const note = this.notes[i];
-
-      if (note.priority === priority) {
-
-        result.push(note)
-
-      }
+  //       //console.log(body)
 
 
-    }
-    return result
-  }
+
+  //       let title = note.title.toLowerCase();
+  //       title = title.includes(query)
+
+  //       if (body || title) {
+  //         result.push(note)
+  //       }
+
+  //     }
+  //     return result;
+  //   },
+  //   filterNotesByPriority(priority) {
+
+  //     const result = [];
+
+  //     for (let i = 0; i < this.notes.length; i += 1) {
+  //       //console.log(this.notes[i]);
+  //       const note = this.notes[i];
+
+  //       if (note.priority === priority) {
+
+  //         result.push(note)
+
+  //       }
+
+
+  //     }
+  //     return result
+  //   }
 };
 
 
@@ -154,70 +151,67 @@ notepad.saveNote({
 
 
 
+//console.log(notepad.findNoteById("id-1"))
 
+// console.log('Все текущие заметки: ', notepad.getNotes());
 
+// /*
+//  * Зима уже близко, пора поднять приоритет на покупку одежды
+//  */
+// notepad.updateNotePriority('id-4', Priority.NORMAL);
 
+// console.log(
+//   'Заметки после обновления приоритета для id-4: ',
+//   notepad.getNotes(),
+// );
 
-console.log('Все текущие заметки: ', notepad.getNotes());
+// /*
+//  * Решил что фреймворки отложу немного, понижаю приоритет
+//  */
+// notepad.updateNotePriority('id-3', Priority.LOW);
 
-/*
- * Зима уже близко, пора поднять приоритет на покупку одежды
- */
-notepad.updateNotePriority('id-4', Priority.NORMAL);
+// console.log(
+//   'Заметки после обновления приоритета для id-3: ',
+//   notepad.getNotes(),
+// );
 
-console.log(
-  'Заметки после обновления приоритета для id-4: ',
-  notepad.getNotes(),
-);
+// /*
+//  * Решил отфильтровать заметки по слову html
+//  */
+// console.log(
+//   'Отфильтровали заметки по ключевому слову "html": ',
+//   notepad.filterNotesByQuery('html'),
+// );
 
-/*
- * Решил что фреймворки отложу немного, понижаю приоритет
- */
-notepad.updateNotePriority('id-3', Priority.LOW);
+// /*
+//  * Решил отфильтровать заметки по слову javascript
+//  */
+// console.log(
+//   'Отфильтровали заметки по ключевому слову "javascript": ',
+//   notepad.filterNotesByQuery('javascript'),
+// );
 
-console.log(
-  'Заметки после обновления приоритета для id-3: ',
-  notepad.getNotes(),
-);
+// /*
+//  * Хочу посмотреть только заметки с нормальным приоритетом
+//  */
+// console.log(
+//   'Отфильтровали заметки по нормальному приоритету: ',
+//   notepad.filterNotesByPriority(Priority.NORMAL),
+// );
 
-/*
- * Решил отфильтровать заметки по слову html
- */
-console.log(
-  'Отфильтровали заметки по ключевому слову "html": ',
-  notepad.filterNotesByQuery('html'),
-);
+// /*
+//  * Обновим контент заметки с id-3
+//  */
+// notepad.updateNoteContent('id-3', {
+//   title: 'Get comfy with React.js or Vue.js',
+// });
 
-/*
- * Решил отфильтровать заметки по слову javascript
- */
-console.log(
-  'Отфильтровали заметки по ключевому слову "javascript": ',
-  notepad.filterNotesByQuery('javascript'),
-);
-
-/*
- * Хочу посмотреть только заметки с нормальным приоритетом
- */
-console.log(
-  'Отфильтровали заметки по нормальному приоритету: ',
-  notepad.filterNotesByPriority(Priority.NORMAL),
-);
-
-/*
- * Обновим контент заметки с id-3
- */
-notepad.updateNoteContent('id-3', {
-  title: 'Get comfy with React.js or Vue.js',
-});
-
-console.log(
-  'Заметки после обновления контента заметки с id-3: ',
-  notepad.getNotes(),
-);
-
+// console.log(
+//   'Заметки после обновления контента заметки с id-3: ',
+//   notepad.getNotes(),
+// );
 /*
  * Повторил HTML и CSS, удаляю запись c id-2
  */
-notepad.deleteNote('id-2');
-console.log('Заметки после удаления с id -2: ', notepad.getNotes());
+// notepad.deleteNote('id-2');
+//console.log('Заметки после удаления с id -2: ', notepad.getNotes());
