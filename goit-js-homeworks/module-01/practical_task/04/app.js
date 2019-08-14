@@ -16,7 +16,7 @@ const messageProtection = 'Активирована система защиты!
 let message;
 
 if (answer) {
-  let message = prompt('Ожидаю ввода пароля!');
+  let message = prompt('Была нажата отмена!');
 } else if (correctAnswer) {
   alert(corectPassword);
 } else {
